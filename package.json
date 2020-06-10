@@ -1,0 +1,26 @@
+{
+  "name": "twilio-sms",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js"
+  },
+  "keywords": [],
+  "author": "John Serrano <jandreys15@gmail.com> (https://twitter.com/jandrey15)",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.9.18",
+    "morgan": "^1.10.0",
+    "pug": "^3.0.0",
+    "socket.io": "^2.3.0",
+    "timeago.js": "^4.0.2",
+    "twilio": "^3.45.0"
+  },
+  "devDependencies": {
+    "dotenv": "^8.2.0",
+    "nodemon": "^2.0.4"
+  }
+}
