@@ -1,11 +1,24 @@
 extends layout.pug
 
 block hero
-    section.hero.is-dark.is-bold
-        .hero-body
-            .container
-                h1.title SMS Twilio
-                h2.subtitle Probando la api de twilio SMS
+  section.hero.is-light.is-bold
+    .hero-body
+      .container
+        .columns.is-mobile
+          .column.is-4.is-offset-4
+            form(action='/api/messages' method='post')
+              .field
+                label.label Cell phone number
+                .control
+                  input.input(type='tel', placeholder='+57314464636' name="phone" autofocus required)
+              .field
+                label.label Message
+                .control
+                  textarea.textarea(placeholder='Write your message' name="message" required)
+              .field.is-grouped
+                .control
+                  button.button.is-link Send
+
 
 block content
   .container(style="flex: 1; padding: 50px 0;")
