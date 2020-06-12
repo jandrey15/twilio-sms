@@ -24,7 +24,9 @@ class MongoLib {
             reject(err)
           }
 
-          console.log('Connected succesfully to mongo')
+          console.log(
+            `Connected succesfully to mongo - database ${this.dbName}`
+          )
           resolve(this.client.db(this.dbName))
         })
       })
