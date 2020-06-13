@@ -8,6 +8,12 @@ const app = express()
 const homeRouter = require('./routes/views/home')
 const messagesApiRouter = require('./routes/api/messages')
 
+const {
+  logErrors,
+  clientErrorHandler,
+  errorHandler,
+} = require('./utils/middlewares/errorsHandlers')
+
 // Middlewares
 app.use(morgan('dev'))
 app.use(express.json()) // Via api object json
@@ -23,6 +29,11 @@ app.set('view engine', 'pug')
 // Routes
 app.use('/', homeRouter)
 messagesApiRouter(app)
+
+// error handlers
+app.use(logErrors)
+app.use(clientErrorHandler)
+app.use(errorHandler)
 
 module.exports = {
   app,
