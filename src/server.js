@@ -6,13 +6,15 @@ const morgan = require('morgan')
 const app = express()
 
 const homeRouter = require('./routes/views/home')
-const messagesApiRouter = require('./routes/api/messages')
+const smsApiRouter = require('./routes/api/sms')
 
 const {
   logErrors,
+  wrapErrors,
   clientErrorHandler,
   errorHandler,
 } = require('./utils/middlewares/errorsHandlers')
+const notFoundHandler = require('./utils/middlewares/notFoundHandler')
 
 // Middlewares
 app.use(morgan('dev'))
@@ -28,10 +30,14 @@ app.set('view engine', 'pug')
 
 // Routes
 app.use('/', homeRouter)
-messagesApiRouter(app)
+smsApiRouter(app)
+
+// Catch 404
+app.use(notFoundHandler)
 
 // error handlers
 app.use(logErrors)
+app.use(wrapErrors)
 app.use(clientErrorHandler)
 app.use(errorHandler)
 

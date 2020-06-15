@@ -6,7 +6,7 @@ block hero
       .container
         .columns.is-mobile
           .column.is-4.is-offset-4
-            form(action='/api/messages' method='post')
+            form(action='/send-sms' method='post')
               .field
                 label.label Cell phone number
                 .control
@@ -15,6 +15,7 @@ block hero
                 label.label Message
                 .control
                   textarea.textarea(placeholder='Write your message' name="message" required)
+              input#datenow(type='hidden' name='create_dt' value='')
               .field.is-grouped
                 .control
                   button.button.is-link Send
@@ -23,6 +24,11 @@ block hero
 block content
   .container(style="flex: 1; padding: 50px 0;")
     .columns.is-multiline
-      h2.title Hola mundo PUG 
-      p.subtitle= message
+      each message in messages
+        .column.is-one-quarter
+          .card
+            .card-title
+              h1.title= message.phone
+            .card-content
+              p= message.message
           

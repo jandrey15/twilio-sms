@@ -11,7 +11,7 @@ const sendSms = async (body, phone, next) => {
     })
     return message
   } catch (err) {
-    console.log(err)
+    // console.log(err)
     next(err)
   }
 }

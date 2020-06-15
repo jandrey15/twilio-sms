@@ -11,6 +11,9 @@
   "author": "John Serrano <jandreys15@gmail.com> (https://twitter.com/jandrey15)",
   "license": "ISC",
   "dependencies": {
+    "@hapi/boom": "^9.1.0",
+    "@hapi/joi": "^17.1.1",
+    "debug": "^4.1.1",
     "express": "^4.17.1",
     "mongodb": "^3.5.8",
     "morgan": "^1.10.0",
