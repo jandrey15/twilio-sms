@@ -3,7 +3,7 @@ const { sendSms } = require('../../twilio/sendsms')
 const SmsService = require('../../services/sms')
 const validationHandler = require('../../utils/middlewares/validationHandler')
 
-const { smsIdSchema, createSmsSchema } = require('../../utils/schemas/sms')
+const { createSmsSchema } = require('../../utils/schemas/sms')
 
 function smsApi(app) {
   const router = express.Router()

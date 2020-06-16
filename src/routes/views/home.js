@@ -4,8 +4,9 @@ const router = epxress.Router()
 const { sendSms } = require('../../twilio/sendsms')
 const SmsService = require('../../services/sms.js')
 const validationHandler = require('../../utils/middlewares/validationHandler')
+const { getSocket } = require('../../sockets')
 
-const { smsIdSchema, createSmsSchema } = require('../../utils/schemas/sms')
+const { createSmsSchema } = require('../../utils/schemas/sms')
 
 const { config } = require('../../config')
 
@@ -41,5 +42,12 @@ router.post(
     }
   }
 )
+
+// Receive an SMS
+router.post('/receive-sms', (req, res) => {
+  console.log(req.body)
+  getSocket().emit('new message', req.body)
+  res.send('SMS received')
+})
 
 module.exports = router
