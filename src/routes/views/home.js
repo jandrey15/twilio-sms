@@ -5,6 +5,7 @@ const { sendSms } = require('../../twilio/sendsms')
 const SmsService = require('../../services/sms.js')
 const validationHandler = require('../../utils/middlewares/validationHandler')
 const { getSocket } = require('../../sockets')
+const timeAgo = require('../../utils/timeAgo')
 
 const { createSmsSchema } = require('../../utils/schemas/sms')
 
@@ -17,6 +18,10 @@ router.get('/', async function (req, res, next) {
 
   try {
     const smsAll = await smsService.getSmsAll({ tags })
+    // console.log(smsAll)
+    smsAll.forEach((data) => {
+      data.create_dt = timeAgo(data.create_dt)
+    })
     res.render('home', { messages: smsAll, dev: config.dev })
   } catch (err) {
     next(err)
